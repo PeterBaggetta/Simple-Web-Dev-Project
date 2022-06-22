@@ -1,10 +1,13 @@
 package com.example.MoDB_SpB.GroceryController;
 
 import com.example.MoDB_SpB.Services.InfoSenders;
-import com.example.MoDB_SpB.repository.ItemRepository;
+import com.example.MoDB_SpB.model.GroceryItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/groceries")
 public class Controller {
@@ -14,26 +17,26 @@ public class Controller {
 
     /* Add an item to the database */
     @PostMapping ("/addItems")
-    public void addItems(@RequestParam String id, String name, int quantity, String category) {
-        infoSenders.createGroceryItem (id, name, quantity, category);
+    public GroceryItem addItems(@RequestParam String id, String name, int quantity, String category) {
+        return (infoSenders.createGroceryItem (id, name, quantity, category));
     }
 
     /* Show all items in the database*/
     @GetMapping ("/showAllItems")
-    public void showAllItems (){
-        infoSenders.showAllGroceryItems();
+    public List<GroceryItem> showAllItems (){
+        return infoSenders.showAllGroceryItems();
     }
 
     /* Get all items with a certain name */
     @GetMapping ("/getByName")
-    public void getByName (@RequestParam String name){
-        infoSenders.getItemsByName(name);
+    public GroceryItem getByName (@RequestParam String name){
+        return infoSenders.getItemsByName(name);
     }
 
     /* Get all items in a certain category */
     @GetMapping ("/getByCategory")
-    public void getByCateory (@RequestParam String category) {
-        infoSenders.getItemsByCategory(category);
+    public List<GroceryItem> getByCateory (@RequestParam String category) {
+        return infoSenders.getItemsByCategory(category);
     }
 
     /* Update item quantity */
@@ -50,8 +53,8 @@ public class Controller {
 
     /* Find total number of grocery items */
     @GetMapping ("/findTotal")
-    public void findTotal () {
-        infoSenders.findNumberGroceryItems();
+    public long findTotal () {
+        return infoSenders.findNumberGroceryItems();
     }
 
 }

@@ -19,27 +19,30 @@ public class InfoSenders {
 
     List<GroceryItem> itemList = new ArrayList<GroceryItem>();
 
-    public void createGroceryItem(String id, String name, int q, String cat) {
-        groceryItemRepo.save(new GroceryItem(id, name, q, cat));
-        System.out.println("Item " + name + " created");
+    public GroceryItem createGroceryItem(String id, String name, int q, String cat) {
+        GroceryItem item = new GroceryItem(id, name, q, cat);
+        groceryItemRepo.save(item);
+        return item;
     }
 
-    public void showAllGroceryItems() {
+    public List<GroceryItem> showAllGroceryItems() {
         itemList = groceryItemRepo.findAll();
-        itemList.forEach(item -> System.out.println(getItemDetails(item)));
+        return itemList;
+//        itemList.forEach(item -> return(getItemDetails(item)));
     }
 
-    public void getItemsByName(String name) {
-        System.out.println(("Getting item by name: " + name));
+    public GroceryItem getItemsByName(String name) {
+//        System.out.println(("Getting item by name: " + name));
         GroceryItem item = groceryItemRepo.findItemByName(name);
-        System.out.println(getItemDetails(item));
+//        System.out.println(getItemDetails(item));
+        return item;
     }
 
-    public void getItemsByCategory(String category) {
-        System.out.println("Getting items for the category " + category);
+    public List<GroceryItem> getItemsByCategory(String category) {
+//        System.out.println("Getting items for the category " + category);
         List<GroceryItem> list = groceryItemRepo.findAll(category);
-
-        list.forEach((item -> System.out.println("Name: " + item.getName() + " Quantity: " + item.getQuantity())));
+        return list;
+//        list.forEach((item -> System.out.println("Name: " + item.getName() + " Quantity: " + item.getQuantity())));
     }
 
     public void updateItemQuantity(String name, float newQuantity) {
@@ -49,12 +52,13 @@ public class InfoSenders {
 
     public void deleteGroceryItem(String id) {
         groceryItemRepo.deleteById(id);
-        System.out.println("Item with id " + id + " has been deleted");
+//        System.out.println("Item with id " + id + " has been deleted");
     }
 
-    public void findNumberGroceryItems() {
+    public long findNumberGroceryItems() {
         long count = groceryItemRepo.count();
-        System.out.println("Number of items in grocery store is " + count);
+        return count;
+//        System.out.println("Number of items in grocery store is " + count);
     }
 
     public String getItemDetails (GroceryItem item) {
