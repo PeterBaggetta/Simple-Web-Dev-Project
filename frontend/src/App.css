@@ -1,18 +1,3 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
 .App-header {
   background-image: url("https://image.shutterstock.com/image-photo/collage-fresh-fruits-vegetables-banner-260nw-557138677.jpg");
   height: 80px;
@@ -25,19 +10,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .dropbtn {
   background-color: #04AA6D;
   color: white;
@@ -47,10 +19,9 @@
 }
 
 .dropdown {
-  position: relative;
+  position: absolute;
   display: inline-block;
 }
-
 
 .dropdown-content {
   display: none;
@@ -63,7 +34,7 @@
 
 .dropdown-content a {
   color: black;
-  padding: 12px 16px;
+  padding: 10px 16px;
   text-decoration: none;
   display: block;
 }

@@ -1,39 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import {AddItems} from './component/AddItems';
+import {GetByName} from './component/GetByName';
+import {GetByCategory} from './component/GetByCategory';
+import {UpdateItemQuantity} from './component/UpdateItemQuantity';
+import {DeleteItem} from './component/DeleteItems';
+import {ShowAllItems} from './component/ShowAllItems';
+// import {FindTotalNumberItems} from './component/FindTotalNumberItems';
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
-function App() {
+function App() {  
   return (
     <div>
-      <header class="App-header"> 
-        <img src="https://media.giphy.com/media/kG3EDN0eXqq4V1Pd6W/giphy-downsized-large.gif" width="92" height="80"/>
-      </header>
-      {/* Dropdown menus */}
-      <div class="dropdown">
-        <button class="dropbtn">Dropdown 1</button>
-        <div class="dropdown-content">
-          <a href="#">Link 1.1</a>
-          <a href="#">Link 1.2</a>
-          <a href="#">Link 1.3</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Dropdown 2</button>
-        <div class="dropdown-content">
-          <a href="#">Link 2.1</a>
-          <a href="#">Link 2.2</a>
-          <a href="#">Link 2.3</a>
-        </div>
-      </div>
-      <div class="dropdown">
-        <button class="dropbtn">Dropdown 3</button>
-        <div class="dropdown-content">
-          <a href="#">Link 3.1</a>
-          <a href="#">Link 3.2</a>
-          <a href="#">Link 3.3</a>
-        </div>
-      </div>
+      <Router>
+        <Routes>
+        <Route path="/" element={<AddItems/>}/>
+        <Route path="/getByName" element={<GetByName/>}/>
+        <Route path="/getByCategory" element={<GetByCategory/>}/>
+        <Route path="/updateItemQuantity" element={<UpdateItemQuantity/>}/>
+        <Route path="/deleteItem" element={<DeleteItem/>}/>
+        <Route path="/showAllItems" element={<ShowAllItems/>}/>
+        {/* <Route path="/findTotal" element={<FindTotalNumberItems/>}/> */}
+        </Routes>
+      </Router>
     </div>
-    
 )}
 
 export default App;
