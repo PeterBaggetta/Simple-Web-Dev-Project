@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { MenuBar } from "./MenuBar";
-import { InputLabel, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 
 export function AddItems() {
     const url = "http://localhost:8080/groceries/";
@@ -20,7 +20,7 @@ export function AddItems() {
 
     async function AddItems(e) {
         e.preventDefault();
-        if (checkError(id, name, quantity, category) == true) {
+        if (checkError(id, name, quantity, category) === true) {
             setLoading(true);
             const result = await axios.post(url + 'addItems?id=' +id+
             '&name=' +name+

@@ -4,8 +4,6 @@ import { MenuBar } from "./MenuBar";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from "@mui/material";
 import { styled } from '@mui/material/styles';
 import { tableCellClasses } from '@mui/material/TableCell';
-import AutoSizer from "react-virtualized-auto-sizer";
-
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {

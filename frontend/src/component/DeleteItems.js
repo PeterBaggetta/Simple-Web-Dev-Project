@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import axios from "axios";
 import { MenuBar } from "./MenuBar";
 import { TextField } from "@mui/material";
 
 export function DeleteItem() {
     const url = "http://localhost:8080/groceries/";
-    const [results, setResults] = useState();
     const [isLoading, setLoading]= useState(true);
 
     const [errorHandle, setErrorHandle] = useState(false);
@@ -14,10 +13,9 @@ export function DeleteItem() {
 
     async function deleteItem(e) {
         e.preventDefault();
-        if (checkError(id) == true) {
+        if (checkError(id) === true) {
             setLoading(true);
             const result = await axios.delete(url + 'deleteItem?id=' + id);
-            setResults(result.data);
             setLoading(false);
         }
     }
@@ -38,8 +36,7 @@ export function DeleteItem() {
                 <form onSubmit={deleteItem}>
                     <br/>
                     <h2><u>Enter the id of the item you would like to delete:</u></h2><br/><br/>
-                    <TextField id="filled-hidden-label-small" error={errorHandle} variant="filled" size="small" label="Id" onChange={e => {setId(e.target.value); checkError()}}/> <br/><br/>
-                    {/* <input type="text" name="Id" onChange={e => setId(e.target.value)}/> <br/><br/> */}
+                    <TextField id="filled-hidden-label-small" error={errorHandle} variant="filled" size="small" label="Item Id" onChange={e => {setId(e.target.value); checkError()}}/> <br/><br/>
                     <input type="submit" value="Delete"/>
                 </form>
             </div>
