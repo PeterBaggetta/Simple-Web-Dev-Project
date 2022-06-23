@@ -4,6 +4,7 @@ import { MenuBar } from "./MenuBar";
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper} from "@mui/material";
 import { styled } from '@mui/material/styles';
 import { tableCellClasses } from '@mui/material/TableCell';
+import AutoSizer from "react-virtualized-auto-sizer";
 
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
@@ -49,8 +50,8 @@ export function ShowAllItems() {
             <MenuBar/>
             {isLoading ? 
             <h3 align="center">No Items in System</h3> : 
-            <TableContainer component={Paper} style={{paddingLeft: 120}}>
-                <Table aria-label="All Items In System" style={{width: 1240}}>
+            <TableContainer component={Paper} style={{paddingLeft: 120, width:'auto'}}>
+                <Table aria-label="All Items In System" >
                     <TableHead>
                         <TableRow>
                             <StyledTableCell>ID [ {totals} item(s) ]</StyledTableCell>
